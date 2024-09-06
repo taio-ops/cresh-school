@@ -1,0 +1,79 @@
+<div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="First name" name="firstname" value="<?= $firstname?>" required/>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Middlename (Optional)" name="middlename" value="<?= $middlename?>"/>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Surname" name="surname" value="<?= $surname?>" required/>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                Gender:
+                <input type="radio" name="gender" value="Male"/> Male
+                <input type="radio" name="gender" value="Female" checked/> Female
+                <input type="radio" name="gender" value="Others"/> Others
+            </div>
+            <div class="col">
+                <div class="d-flex">
+                    Date Of Birth:
+                    <input type="date" class="form-control" name="dob" value="<?= $dob ?>" required/>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <input type="password" class="form-control" placeholder="Password" name="password" value="<?= $password?>" required/>
+                <span class="text-danger"><?= $passError?></span>
+            </div>
+            <div class="col">
+                <input type="password" class="form-control" placeholder="Confirm Password" name="cpassword" value="<?= $cpassword ?>" required />
+                <span class="text-danger"><?= $passError?></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <textarea placeholder="Home Address" name="student_address" class="form-control" required><?= $student_address?></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                Class:
+                <select class="form-select" name="class" value="<?= $class?>" required>
+                    <option value="Cresh">Cresh</option>
+                    <option value="KG1">KG1</option>
+                    <option value="KG2">KG2</option>
+                    <option value="Nur1">Nur1</option>
+                    <option value="Nur2">Nur2</option>
+                    <option value="Pry1">Pry1</option>
+                    <option value="Pry2">Pry2</option>
+                    <option value="Pry3">Pry3</option>
+                    <option value="Pry4">Pry4</option>
+                    <option value="Pry5">Pry5</option>
+                    <option value="Pry6">Pry6</option>
+                    <option value="JSS1">JSS1</option>
+                    <option value="JSS2">JSS2</option>
+                    <option value="JSS3">JSS3</option>
+                    <option value="SSS1">SSS1</option>
+                    <option value="SSS2">SSS2</option>
+                    <option value="SSS3">SSS3</option>
+                </select>
+            </div>
+            <div class="col">
+                Department:
+                <select class="form-select" name="department" value="<?= $department?>" required>
+                    <option value="null">No Selection</option>
+                    <option value="Art">Art</option>
+                    <option value="Science">Science</option>
+                    <option value="Commercial">Commercial</option>
+                    
+                </select>
+            </div>
+        </div>

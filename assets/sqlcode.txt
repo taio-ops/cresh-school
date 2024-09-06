@@ -1,0 +1,36 @@
+CREATE database cresh_db;
+
+use cresh_db;
+
+CREATE TABLE Guardians (
+    guardian_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    firstname VARCHAR(30) NOT NULL,
+    middlename VARCHAR(30),
+    surname VARCHAR(30) NOT NULL,
+    phone1 VARCHAR(15) NOT NULL UNIQUE,
+    phone2 VARCHAR(15) UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    gender ENUM('Male', 'Female', 'Others') DEFAULT 'Female',
+    marital_status VARCHAR(10) NOT NULL,
+    home_address VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Students (
+    student_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    firstname VARCHAR(30) NOT NULL,
+    middlename VARCHAR(30),
+    surname VARCHAR(30) NOT NULL,
+    dob DATE NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    gender ENUM('Male', 'Female', 'Others') DEFAULT 'Female',
+    home_address VARCHAR(255) NOT NULL,
+    guardian_id INT,
+    class VARCHAR(5) NOT NULL,
+    department VARCHAR(10),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
