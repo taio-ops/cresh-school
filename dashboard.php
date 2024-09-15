@@ -10,21 +10,17 @@
     echo "<h1>welcome, " . $_SESSION['firstname'] . "</h1>";
     // echo "<h1>welcome, $_SESSION['firstname']</h1>";
     $student_dp = "";
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $student_dp = $_FILES['student_dp'];
+   if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $student_dp = $_FILES("student_dp");
 
-        // echo $student_dp['error'];
         if($student_dp['error'] == 0) {
-            // echo pathinfo($student_dp['name'], PATHINFO_EXTENSION);
-            $filename = uniqid('student_') . "." . pathinfo($student_dp['name'], PATHINFO_EXTENSION);
-            $fileLocation = "student_dp/" . $filename;
-            
+            $filename = uniqid("student_") . "." . pathinfo($student_dp['name'], PATHINFO_EXTENSION);
+            $filelocation = "student_dp/" . $filename;
         } else {
-            echo "Error in uploading file";
+            echo "error uploading file";
         }
-    }
     
-
+   }
 ?>
 
 <style>
@@ -41,27 +37,34 @@
 </form>
 
 <script>
-    const preview = document.querySelector("#imagePreview");
-    const studImage = document.querySelector("#student_dp");
-    
-    studImage.addEventListener("change", function() {
-        let file = this.files[0];
+   const pic = document.getElementById("#imagePreview");
+   const upload = document.getElementById("#student_dp");
 
-        fileSize = 3 * 1024 * 1024;
-        if (file['type'] == "image/jpeg" || file['type'] == "image/png" || file['type'] == "image/jpg") {
-            if (!(file['size'] > fileSize)) {
-                const reader = new FileReader();
-                reader.onload = function() {
-                    preview.src = reader.result;
-                }
-                reader.readAsDataURL(file);
+   
+
+   upload.addEventListener("change", function {
+    let file = this.files[0];
+
+    sizeofFile = 4 * 1024 * 1024;
+
+    if(file["type"] == jpg || file["type"] == jpeg || file["type"] == png) {
+        if(!(file["size"] > sizeofFile)) {
+            const reader = new FileReader();
+            reader.onload = function {
+                pic.src = reader.result
+            } 
+            reader.readAsDataURL(file)
         } else {
-            alert("file exceed 3MB");
+            alert (file['size'] "+ is greater the 4MB");
             this.value = "";
         }
-        } else {
-            alert(file['name'] + " is not allowed");
-            this.value = "";
-        }
-    });
+    } else {
+        alert (file['name'] "+ is not accepted");
+        this.value = "";
+    }
+   
+
+   })
+
+
 </script>

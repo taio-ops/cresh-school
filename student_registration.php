@@ -17,8 +17,8 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Capturing student bio-data
         $firstname = htmlspecialchars(trim($_POST["firstname"]));
-        $middlename = htmlspecialchars($_POST["middlename"]);
-        $surname = htmlspecialchars($_POST["surname"]);
+        $middlename = htmlspecialchars(trim($_POST["middlename"]));
+        $surname = htmlspecialchars(trim($_POST["surname"]));
         $gender = htmlspecialchars($_POST["gender"]);
         $dob = htmlspecialchars($_POST["dob"]);
         $student_address = htmlspecialchars($_POST['student_address']);
@@ -40,6 +40,7 @@
 
         // Validating email address
         $email = $firstname . $surname . rand(1,100) . "@cresh.edu.ng";
+        $email = strtolower(str_replace(" ", "",$email));
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $sql = "SELECT * FROM students WHERE email = ?";
             $stmt = $conn->prepare($sql);
