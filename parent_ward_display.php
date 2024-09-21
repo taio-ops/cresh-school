@@ -1,19 +1,22 @@
 <?php
-    $pageTitle = 'My Wards';
-    require_once('assets/header.php');
-    require_once('assets/db_connect.php');
+    $pageTitle = "My Wards";
+    require_once("assets/header.php");
+    require_once("assets/db_connect.php");
 
-    if (!isset($_SESSION['parent_id'])) {
-        header('Location:parent_login.php');
+    // Check if parent is logged in
+    if(!isset($_SESSION['parent_id'])) {
+        header("Location: parent_login.php");
     }
 
+    // Get parent's wards
     $parent_id = $_SESSION['parent_id'];
-    $query = 'SELECT * FROM students WHERE guardian_id = $parent_id LIMIT 1';
+    $query = "SELECT * FROM students WHERE guardian_id = $parent_id";
     $result = mysqli_query($conn, $query);
 
-    if (mysqli_num_rows($result) > 0) {
-        echo "<div class = 'd-flex flex-wrap gap-3'>";
-        while ($row = mysqli_fetch_assoc($result)) {
+    // Check if any wards exist
+    if(mysqli_num_rows($result) > 0) {
+        echo "<div class='d-flex flex-wrap gap-3'>";
+        while($row = mysqli_fetch_assoc($result)) {
 ?>
             <div class="card" style="width: 18rem; object-fit: contain;">
                 <img class="card-img-top" src="<?= $row['student_dp'] ?>" alt="<?= $row['firstname'] ?>" style="height: 200px; object-fit: cover; object-position: top">
@@ -25,12 +28,9 @@
                 </div>
             </div>
 <?php
-
         }
-          echo "</div>";
-        
+        echo "</div>";
     } else {
-        "<h3>No Wards found </h3>";
+        echo "<h3>No wards found for this parent</h3>";
     }
-?> 
-
+?>

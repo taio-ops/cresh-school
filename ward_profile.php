@@ -8,9 +8,8 @@
     }
 
     $student_id = $_GET['sid'];
-    $query = 'SELECT * FROM students WHERE student_id = $student_id LIMIT 1';
+    $query = "SELECT * FROM students WHERE student_id = $student_id LIMIT 1";
     $result = mysqli_query($conn, $query);
-
     $student_data = mysqli_fetch_assoc($result) 
 ?>
 <div style="width:300px">
